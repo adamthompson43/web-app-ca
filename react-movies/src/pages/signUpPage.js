@@ -32,7 +32,7 @@ const SignUpPage = props => {
 };
 
   if (registered) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 
 
@@ -53,7 +53,7 @@ const SignUpPage = props => {
         setPasswordAgain(e.target.value);
       }}></input><br />
       {/* Login web form  */}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>} 
       <button onClick={register}>Register</button>
     </>
   );

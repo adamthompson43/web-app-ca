@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,12 +11,15 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { AuthContext } from "../../contexts/authContext";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const context = useContext(AuthContext);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -29,8 +32,7 @@ const SiteHeader = ({ history }) => {
     { label: "Popular", path: "/movies/popular"},
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Top Rated", path: "/movies/topRated"},
-    { label: "Playlist", path: "/movies/playlist" },
-    { label: "Login", path: "/login"}
+    { label: "Playlist", path: "/movies/playlist" }
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -54,9 +56,18 @@ const SiteHeader = ({ history }) => {
               TMDB Client
               </Typography>
             </Button>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
-            All you ever wanted to know about Movies!
-          </Typography>
+            {context.isAuthenticated ? (
+            <div>
+              <Button color="inherit" >
+                Sign out
+              </Button>
+            </div>
+          ) : (
+            <Button color="inherit" onClick={() => navigate("/login")}>
+              Login
+            </Button>
+          )}
+
             {isMobile ? (
               <>
                 <IconButton
