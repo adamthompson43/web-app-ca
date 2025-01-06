@@ -43,6 +43,11 @@ const SiteHeader = ({ history }) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const handleSignout = () => {
+    context.signout();
+    navigate("/")
+  }
+
   return (
     <>
       <AppBar position="fixed" color="secondary">
@@ -58,7 +63,7 @@ const SiteHeader = ({ history }) => {
             </Button>
             {context.isAuthenticated ? (
             <div>
-              <Button color="inherit" >
+              <Button color="inherit" onClick={handleSignout} >
                 Sign out
               </Button>
             </div>
