@@ -14,6 +14,8 @@ import UpcomingMoviesPage from "./pages/upcomingMoviesPage"
 import PlaylistPage from "./pages/playlistPage"
 import PopularMoviesPage from "./pages/popularMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage"
+import LoginPage from "./pages/loginPage";
+import AuthContextProvider from "./contexts/authContext";
 
 
 
@@ -32,6 +34,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <AuthContextProvider>
         <SiteHeader />
         <MoviesContextProvider>
           <Routes>
@@ -45,8 +48,10 @@ const App = () => {
             <Route path="/movies/playlist" element={<PlaylistPage /> } />
             <Route path="/movies/popular" element={<PopularMoviesPage />} />
             <Route path="/movies/topRated" element={<TopRatedMoviesPage />} />
+            <Route path="/login" element={<LoginPage/>} />
           </Routes>
         </MoviesContextProvider>
+        </AuthContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
