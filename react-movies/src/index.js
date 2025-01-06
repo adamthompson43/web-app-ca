@@ -15,6 +15,7 @@ import PlaylistPage from "./pages/playlistPage"
 import PopularMoviesPage from "./pages/popularMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage"
 import LoginPage from "./pages/loginPage";
+import SignUpPage from "./pages/signUpPage";
 import AuthContextProvider from "./contexts/authContext";
 
 
@@ -49,6 +50,7 @@ const App = () => {
             <Route path="/movies/popular" element={<PopularMoviesPage />} />
             <Route path="/movies/topRated" element={<TopRatedMoviesPage />} />
             <Route path="/login" element={<LoginPage/>} />
+            <Route path="/signUp" element={<SignUpPage/>} />
           </Routes>
         </MoviesContextProvider>
         </AuthContextProvider>
