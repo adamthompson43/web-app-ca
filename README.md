@@ -4,9 +4,8 @@ Name: Adam Thompson
 
 ## Features.
 
-A bullet-point list of the ADDITIONAL features you have implemented in the API **THAT WERE NOT IN THE LABS** (or modifications to existing features)
- 
  + Modified authentification from labs to only allow users to see favourites and playlist pages 
+ + Added favourites and playlist pages to protected routes, only allowing users to access them
  + Added error handling to sign in and login screens (e.g wrong password, incorrect confirm password on sign up) 
  + Used Materials UI to make new login and sign up pages
  + Added endpoints for popular and top rated movies
@@ -21,14 +20,16 @@ A bullet-point list of the ADDITIONAL features you have implemented in the API *
 
 ## API Configuration
 
+1. Add "REACT_APP_TMDB_KEY=your_tmdb_key" to /react-movies/.env
+2. Add the following to /movies-api/.env
 
 ______________________
-NODEENV=development
+NODE_ENV=development
 PORT=8080
-HOST=
-mongoDB=YourMongoURL
-seedDb=true
-secret=YourJWTSecret
+HOST=localhost
+MONGO_DB=your_mongodb_url
+TMDB_KEY=your_tmdb_key
+SECRET=your_jwt_secret
 ______________________
 
 ## API Design
@@ -39,16 +40,14 @@ Give an overview of your web API design, perhaps similar to the following:
 - /api/movies/{movieid}/reviews | GET | Get all reviews for movie 
 - /api/movies/{movieid}/reviews | POST | Create a new review for Movie 
 
-If you have your API design on an online platform or graphic, please link to it (e.g. [Swaggerhub](https://app.swaggerhub.com/)).
+
 
 ## Security and Authentication
 
-Give details of authentication/security implemented on the API (e.g. passport/sessions). Indicate which routes are protected.
++ Favourites and Playlist pages are protected from non-users, leading them to the login page
++ Passwords are encrypted 
++ Passwords must be 8 characters with one upper case, one number, and one special character
 
-## Integrating with React App
 
-Describe how you integrated your React app with the API. List the views that use your Web API instead of the TMDB API. Describe any other updates to the React app from Assignment One.
 
-## Independent learning (if relevant)
 
-Briefly explain any non-standard features developed for the app.   
