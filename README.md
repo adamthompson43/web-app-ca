@@ -4,6 +4,8 @@ Name: Adam Thompson
 
 ## Features.
 
+A bullet-point list of the ADDITIONAL features you have implemented in the API **THAT WERE NOT IN THE LABS** (or modifications to existing features)
+ 
  + Modified authentification from labs to only allow users to see favourites and playlist pages 
  + Added favourites and playlist pages to protected routes, only allowing users to access them
  + Added error handling to sign in and login screens (e.g wrong password, incorrect confirm password on sign up) 
@@ -17,6 +19,7 @@ Name: Adam Thompson
 2. Clone repository from https://github.com/adamthompson43/wad-api-labs-2024.git
 3. Create .env file in react-movies and movies-api directories
 4. Run "npm install" and "npm start" in react-movies directory
+5. Run "npm run dev" in movies-api directory
 
 ## API Configuration
 
@@ -38,9 +41,6 @@ Give an overview of your web API design, perhaps similar to the following:
 - /api/movies | GET | Gets a list of movies 
 - /api/movies/{movieid} | GET | Gets a single movie 
 - /api/movies/{movieid}/reviews | GET | Get all reviews for movie 
-- /api/movies/{movieid}/reviews | POST | Create a new review for Movie 
-
-
 
 ## Security and Authentication
 
@@ -48,6 +48,9 @@ Give an overview of your web API design, perhaps similar to the following:
 + Passwords are encrypted 
 + Passwords must be 8 characters with one upper case, one number, and one special character
 
+## Integrating with React App
 
++ Routed Movie lists through API 
++ Favourites and Playlist are inaccessible to non-users
 
 
