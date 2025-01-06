@@ -12,6 +12,7 @@ import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { AuthContext } from "../../contexts/authContext";
+import Chip from "@mui/material/Chip"
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -65,6 +66,7 @@ const SiteHeader = ({ history }) => {
             </Button>
             {context.isAuthenticated ? (
             <div>
+              <Chip color="inherit" label={context.userName} sx={{color: "white"}}></Chip>
               <Button color="inherit" onClick={handleSignout} >
                 Sign out
               </Button>

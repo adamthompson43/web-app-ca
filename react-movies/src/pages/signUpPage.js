@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { AuthContext } from '../contexts/authContext';
+import { TextField, Button, Typography, Box, Container, Alert } from '@mui/material';
 
 const SignUpPage = props => {
   const context = useContext(AuthContext)
@@ -32,31 +33,87 @@ const SignUpPage = props => {
 };
 
   if (registered) {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 
 
 
 
+return (
+    <Container component="main" maxWidth="xs">
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                marginTop: 8,
+                padding: 3,
+                borderRadius: 2,
+                boxShadow: 3,
+                backgroundColor: '#fff',
+            }}
+        >
+            <Typography component="h1" variant="h5" gutterBottom>
+                Sign up
+            </Typography>
+            <Typography variant="body2" color="textSecondary" marginBottom={2}>
+                Sign up for a TMDB Client Account
+            </Typography>
 
-  return (
-    <>
-      <h2>SignUp page</h2>
-      <p>You must register a username and password to log in </p>
-      <input value={userName} placeholder="user name" onChange={e => {
-        setUserName(e.target.value);
-      }}></input><br />
-      <input value={password} type="password" placeholder="password" onChange={e => {
-        setPassword(e.target.value);
-      }}></input><br />
-      <input value={passwordAgain} type="password" placeholder="password again" onChange={e => {
-        setPasswordAgain(e.target.value);
-      }}></input><br />
-      {/* Login web form  */}
-      {error && <p style={{ color: "red" }}>{error}</p>} 
-      <button onClick={register}>Register</button>
-    </>
-  );
+            {error && (
+                <Alert severity="error" sx={{ width: "100%", marginBottom: 2}}>
+                    {error}
+                </Alert>
+            )}
+
+            <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="username"
+                label="Username"
+                autoFocus
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+            />
+
+            <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                type="password"
+                id="password"
+                label="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+
+            <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                type="password"
+                id="password"
+                label="Type password again"
+                value={passwordAgain}
+                onChange={(e) => setPasswordAgain(e.target.value)}
+            />
+
+            <Button
+                variant="contained"
+                fullWidth
+                sx={{ mt: 2 }}
+                onClick={register}
+            >
+                Sign Up
+            </Button>
+        </Box>
+    </Container>
+);
 };
+
 
 export default SignUpPage;
